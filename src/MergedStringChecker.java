@@ -1,19 +1,17 @@
 /*
 ###TASK###
+
 At a job interview, you are challenged to write an algorithm to check if a given string, s, can be formed from two other strings, part1 and part2.
+The restriction is that the characters in part1 and part2 should be in the same order as in s.
+The interviewer gives you the following example and tells you to figure out the rest from the given test cases.
+For example:
+'codewars' is a merge from 'cdw' and 'oears':
+s:  c o d e w a r s   = codewars
+part1:  c   d   w         = cdw
+part2:    o   e   a r s   = oears
 
-        The restriction is that the characters in part1 and part2 should be in the same order as in s.
-
-        The interviewer gives you the following example and tells you to figure out the rest from the given test cases.
-
-        For example:
-
-        'codewars' is a merge from 'cdw' and 'oears':
-
-        s:  c o d e w a r s   = codewars
-        part1:  c   d   w         = cdw
-        part2:    o   e   a r s   = oears
 ###SOLUTION###
+
 The solution based on pure recursion will be much shorter, but it can lead to performance losses due to unnecessary substring operations
 */
 public class MergedStringChecker {
@@ -44,21 +42,13 @@ public class MergedStringChecker {
                 }
             }
 
-            if (pt1n < pt1.length) {
-                char pc1 = pt1[pt1n];
-                if (c == pc1) {
-                    pt1n++;
-                    continue;
-                }
+            if (pt1n < pt1.length && c == pt1[pt1n]) {
+                pt1n++;
+            } else if (pt2n < pt2.length && c == pt2[pt2n]) {
+                pt2n++;
+            } else {
+                return false;
             }
-            if (pt2n < pt2.length) {
-                char pc2 = pt2[pt2n];
-                if (c == pc2) {
-                    pt2n++;
-                    continue;
-                }
-            }
-            return false;
 
         }
 
